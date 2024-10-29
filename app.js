@@ -26,7 +26,7 @@ app.post("/roman-numerals", async (req, res) => {
         Object.keys(roman).forEach((key, index) => {
             if (number >= roman[key]) {
                 if (Object.keys(roman).length === index + 1) {
-                    for (i = 0; i = number; i--) {
+                    for (i = 0; i < number; i--) {
                         roman_number = roman_number + key;
                         number = number - roman[key];
                     }
