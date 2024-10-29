@@ -24,18 +24,19 @@ app.post("/roman-numerals", async (req, res) => {
         var roman_number = "";
 
         Object.keys(roman).forEach((key, index) => {
-            if (number >= roman[key]) {
-                if (Object.keys(roman).length === index + 1) {
-                    for (i = 0; i < number; i--) {
-                        roman_number = roman_number + key;
-                        number = number - roman[key];
-                    }
-                } else {
-                    roman_number = roman_number + key;
-                    number = number - roman[key];
-                }
+    if (number >= roman[key]) {
+        if (Object.keys(roman).length === index + 1) {
+            while (number >= roman[key]) {
+                roman_number += key;
+                number -= roman[key];
             }
-        })
+        } else {
+            roman_number += key;
+            number -= roman[key];
+        }
+    }
+});
+
         res.json({
             status: 200,
             data: roman_number
